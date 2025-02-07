@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        .pagination-info {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">File Management System</h1>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Panel - Input Form -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">File Entry</h2>
+                <form id="fileForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">File Number</label>
+                        <input type="text" id="fileNumber" required
+                               class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Received Month</label>
+                        <select id="receivedMonth" required
+                                class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Received Year</label>
+                        <select id="receivedYear" required
+                                class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Status</label>
+                        <select id="status" required
+                                class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                            <option value="Pending">Pending</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div id="closedFields" class="hidden space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Closed Month</label>
+                            <select id="closedMonth"
+                                    class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Closed Year</label>
+                            <select id="closedYear"
+                                    class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button type="submit" 
+                                class="flex-1 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                            Save
+                        </button>
+                        <button type="button" 
+                                onclick="clearForm()"
+                                class="flex-1 bg-gray-500 text-white p-2 rounded hover:bg-gray-600">
+                            Clear
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Center Panel - File List -->
+            <div class="lg:col-span-2 bg-white rounded-lg shadow p-6">
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold">File List</h2>
+                        <div class="space-x-2">
+                            <button onclick="listPendingFiles()" 
+                                    class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+                                List Pending
+                            </button>
+                            <button onclick="exportFiles()" 
+                                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Controls -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <select id="filterMonth"
+                                class="p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                        </select>
+                        <select id="filterYear"
+                                class="p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                        </select>
+                        <div class="flex space-x-2">
+                            <button onclick="filterFiles()"
+                                    class="flex-1 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                                Filter
+                            </button>
+                            <button onclick="clearFilter()"
+                                    class="flex-1 bg-gray-500 text-white p-2 rounded hover:bg-gray-600">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pagination Info -->
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="pagination-info">
+                            Showing <span id="startCount">0</span> to <span id="endCount">0</span> of 
+                            <span id="totalCount">0</span> entries
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm text-gray-500">Page Size:</label>
+                            <select id="pageSize" class="border rounded p-1">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File List Table -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    File Number
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Received
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Closed
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="fileList" class="bg-white divide-y divide-gray-200">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="mt-4 flex justify-between items-center">
+                    <div class="flex space-x-2">
+                        <button id="prevPage" 
+                                class="px-4 py-2 border rounded bg-gray-100 hover:bg-gray-200 disabled:opacity-50">
+                            Previous
+                        </button>
+                        <button id="nextPage" 
+                                class="px-4 py-2 border rounded bg-gray-100 hover:bg-gray-200 disabled:opacity-50">
+                            Next
+                        </button>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Panel - Statistics and Reports -->
+        <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Statistics -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Statistics</h2>
+                <div id="statistics" class="grid grid-cols-2 gap-4">
+                    <!-- Statistics will be populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Reports -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Generate Reports</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <select id="reportMonth"
+                            class="p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                    </select>
+                    <select id="reportYear"
+                            class="p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <button onclick="generateMonthlySummary()"
+                            class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                        Monthly Summary
+                    </button>
+                    <button onclick="generateDetailedSummary()"
+                            class="bg-purple-500 text-white p-2 rounded hover:bg-purple-600">
+                        Detailed Summary
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="mt-6">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Status Distribution</h2>
+                <canvas id="statusChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pagination state
+        let currentPage = 1;
+        let pageSize = 10;
+        let allFiles = [];
+        let statusChart = null;
+
+        // Month and year data
+        const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+        const currentYear = new Date().getFullYear();
+        const years = Array.from({length: 10}, (_, i) => currentYear - 5 + i);
+
+        // Initialize dropdowns
+        function populateDropdowns() {
+            const monthDropdowns = ['receivedMonth', 'closedMonth', 'filterMonth', 'reportMonth'];
+            const yearDropdowns = ['receivedYear', 'closedYear', 'filterYear', 'reportYear'];
+
+            monthDropdowns.forEach(id => {
+                const select = document.getElementById(id);
+                select.innerHTML = '';
+                months.forEach(month => {
+                    const option = new Option(month, month);
+                    select.add(option);
+                });
+            });
+
+            yearDropdowns.forEach(id => {
+                const select = document.getElementById(id);
+                select.innerHTML = '';
+                years.forEach(year => {
+                    const option = new Option(year, year);
+                    select.add(option);
+                });
+            });
+        }
+
+        // Display files with pagination
+        function displayPaginatedFiles(files) {
+            const start = (currentPage - 1) * pageSize;
+            const end = Math.min(start + pageSize, files.length);
+            const paginatedFiles = files.slice(start, end);
+            
+            // Update pagination info
+            document.getElementById('startCount').textContent = files.length ? start + 1 : 0;
+            document.getElementById('endCount').textContent = end;
+            document.getElementById('totalCount').textContent = files.length;
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('totalPages').textContent = Math.ceil(files.length / pageSize);
+            
+            // Update navigation buttons
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = end >= files.length;
+            
+            // Display files
+            const tbody = document.getElementById('fileList');
+            tbody.innerHTML = '';
+
+            paginatedFiles.forEach(file => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">${file.file_number}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${file.received_month} ${file.received_year}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                   ${file.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}">
+                            ${file.status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${file.status === 'Closed' ? `${file.closed_month} ${file.closed_year}` : '-'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap space-x-2">
+                        <button onclick="editFile('${file.file_number}')"
+                                class="text-blue-600 hover:text-blue-900">
+                            Edit
+                        </button>
+                        <button onclick="deleteFile('${file.file_number}')"
+                                class="text-red-600 hover:text-red-900">
+                            Delete
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Load files
+        async function loadFiles() {
+            try {
+                const response = await fetch('/api/files');
+                allFiles = await response.json();
+                displayPaginatedFiles(allFiles);
+                await updateStatistics();
+            } catch (error) {
+                console.error('Error loading files:', error);
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('fileForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                file_number: document.getElementById('fileNumber').value,
+                received_month: document.getElementById('receivedMonth').value,
+                received_year: parseInt(document.getElementById('receivedYear').value),
+                status: document.getElementById('status').value,
+                closed_month: document.getElementById('closedMonth').value,
+                closed_year: parseInt(document.getElementById('closedYear').value)
+            };
+
+            const url = this.getAttribute('data-edit-id') 
+                ? `/api/files/${this.getAttribute('data-edit-id')}`
+                : '/api/files';
+            const method = this.getAttribute('data-edit-id') ? 'PUT' : 'POST';
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    clearForm();
+                    await loadFiles();
+                    await updateStatistics();
+                } else {
+                    const data = await response.json();
+                    alert(data.message || 'Error saving file');
+                }
+            } catch (error) {
+                alert('Error saving file');
+            }
+        });
+
+        // Event listeners for pagination
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayPaginatedFiles(allFiles);
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage * pageSize < allFiles.length) {
+                currentPage++;
+                displayPaginatedFiles(allFiles);
+            }
+        });
+
+        document.getElementById('pageSize').addEventListener('change', (e) => {
+            pageSize = parseInt(e.target.value);
+            currentPage = 1;
+            displayPaginatedFiles(allFiles);
+        });
+
+        // Toggle closed fields based on status
+        document.getElementById('status').addEventListener('change', function() {
+            const closedFields = document.getElementById('closedFields');
+            closedFields.style.display = this.value === 'Closed' ? 'block' : 'none';
+        });
+
+        // Filter files
+        async function filterFiles() {
+            const month = document.getElementById('filterMonth').value;
+            const year = document.getElementById('filterYear').value;
+            
+            try {
+                const response = await fetch(`/api/filter?month=${months.indexOf(month) + 1}&year=${year}`);
+                allFiles = await response.json();
+                currentPage = 1;
+                displayPaginatedFiles(allFiles);
+                await updateStatistics();
+            } catch (error) {
+                alert('Error filtering files');
+            }
+        }
+
+        // Clear filter
+        function clearFilter() {
+            document.getElementById('filterMonth').value = months[new Date().getMonth()];
+            document.getElementById('filterYear').value = new Date().getFullYear();
+            loadFiles();
+        }
+
+        // List pending files
+        async function listPendingFiles() {
+            try {
+                const response = await fetch('/api/pending');
+                allFiles = await response.json();
+                currentPage = 1;
+                displayPaginatedFiles(allFiles);
+            } catch (error) {
+                alert('Error loading pending files');
+            }
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('fileForm').reset();
+            document.getElementById('closedFields').style.display = 'none';
+            document.getElementById('fileForm').removeAttribute('data-edit-id');
+            document.querySelector('#fileForm button[type="submit"]').textContent = 'Save';
+        }
+
+        // Edit file
+        async function editFile(fileNumber) {
+            try {
+                const file = allFiles.find(f => f.file_number === fileNumber);
+                
+                if (file) {
+                    document.getElementById('fileNumber').value = file.file_number;
+                    document.getElementById('receivedMonth').value = file.received_month;
+                    document.getElementById('receivedYear').value = file.received_year;
+                    document.getElementById('status').value = file.status;
+                    
+                    const closedFields = document.getElementById('closedFields');
+                    if (file.status === 'Closed') {
+                        closedFields.style.display = 'block';
+                        document.getElementById('closedMonth').value = file.closed_month;
+                        document.getElementById('closedYear').value = file.closed_year;
+                    } else {
+                        closedFields.style.display = 'none';
+                    }
+
+                    document.getElementById('fileForm').setAttribute('data-edit-id', file.file_number);
+                    document.querySelector('#fileForm button[type="submit"]').textContent = 'Update';
+                }
+            } catch (error) {
+                alert('Error loading file details');
+            }
+        }
+
+        // Delete file
+        async function deleteFile(fileNumber) {
+            if (confirm('Are you sure you want to delete this file?')) {
+                try {
+                    const response = await fetch(`/api/files/${fileNumber}`, {
+                        method: 'DELETE'
+                    });
+                    if (response.ok) {
+                        await loadFiles();
+                        await updateStatistics();
+                    }
+                } catch (error) {
+                    alert('Error deleting file');
+                }
+            }
+        }
+
+        // Export files
+        function exportFiles() {
+            window.location.href = '/api/export';
+        }
+
+        // Generate monthly summary
+        async function generateMonthlySummary() {
+            const month = document.getElementById('reportMonth').value;
+            const year = document.getElementById('reportYear').value;
+            
+            // Download Excel file
+            window.location.href = `/api/summary/monthly?month=${months.indexOf(month) + 1}&year=${year}`;
+            
+            // Update statistics and chart
+            await updateStatistics();
+        }
+
+        // Generate detailed summary
+        async function generateDetailedSummary() {
+            const month = document.getElementById('reportMonth').value;
+            const year = document.getElementById('reportYear').value;
+            
+            // Download Excel file
+            window.location.href = `/api/summary/detailed?month=${months.indexOf(month) + 1}&year=${year}`;
+            
+            // Update statistics and chart
+            await updateStatistics();
+        }
+
+        // Update statistics and chart
+        async function updateStatistics() {
+            try {
+                const month = document.getElementById('reportMonth').value;
+                const year = document.getElementById('reportYear').value;
+                const response = await fetch(`/api/stats?month=${months.indexOf(month) + 1}&year=${year}`);
+                const stats = await response.json();
+
+                updateStatisticsPanel(stats);
+                updateChart(stats);
+            } catch (error) {
+                console.error('Error updating statistics:', error);
+            }
+        }
+
+        // Update statistics panel
+        function updateStatisticsPanel(stats) {
+            const statisticsContainer = document.getElementById('statistics');
+            statisticsContainer.innerHTML = '';
+
+            const categories = [
+                { key: 'category_5', color: 'blue', label: 'Within 3 Months' },
+                { key: 'category_6', color: 'yellow', label: '3-6 Months' },
+                { key: 'category_7', color: 'orange', label: '6-12 Months' },
+                { key: 'category_8', color: 'red', label: 'Over 1 Year' }
+            ];
+
+            categories.forEach(item => {
+                const div = document.createElement('div');
+                div.className = `bg-${item.color}-50 p-4 rounded`;
+                div.innerHTML = `
+                    <h3 class="text-sm font-medium text-${item.color}-800">${item.label}</h3>
+                    <p class="text-2xl font-bold text-${item.color}-900">${stats[item.key].value}</p>
+                `;
+                statisticsContainer.appendChild(div);
+            });
+        }
+
+        // Update chart
+        function updateChart(stats) {
+            const ctx = document.getElementById('statusChart').getContext('2d');
+            
+            const data = {
+                labels: ['Within 3 Months', '3-6 Months', '6-12 Months', 'Over 1 Year'],
+                datasets: [{
+                    data: [
+                        stats.category_5.value,
+                        stats.category_6.value,
+                        stats.category_7.value,
+                        stats.category_8.value
+                    ],
+                    backgroundColor: [
+                        '#93C5FD',  // blue-300
+                        '#FCD34D',  // yellow-300
+                        '#FDBA74',  // orange-300
+                        '#FCA5A5'   // red-300
+                    ]
+                }]
+            };
+
+            if (statusChart) {
+                statusChart.destroy();
+            }
+
+            statusChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize the page
+        populateDropdowns();
+        loadFiles();
+    </script>
+</body>
+</html>

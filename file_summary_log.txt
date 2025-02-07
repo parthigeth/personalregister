@@ -1,0 +1,161 @@
+2025-02-06 17:14:07,814 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-06 17:14:07,815 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-06 17:14:07,817 - INFO:  * Restarting with stat
+2025-02-06 17:14:08,698 - WARNING:  * Debugger is active!
+2025-02-06 17:14:08,701 - INFO:  * Debugger PIN: 290-214-146
+2025-02-06 17:14:53,709 - INFO: 127.0.0.1 - - [06/Feb/2025 17:14:53] "GET / HTTP/1.1" 200 -
+2025-02-06 17:14:54,438 - INFO: 127.0.0.1 - - [06/Feb/2025 17:14:54] "GET /api/files HTTP/1.1" 200 -
+2025-02-06 17:14:54,579 - INFO: 127.0.0.1 - - [06/Feb/2025 17:14:54] "[35m[1mGET /api/stats?month=1&year=2020 HTTP/1.1[0m" 500 -
+2025-02-06 17:14:54,795 - INFO: 127.0.0.1 - - [06/Feb/2025 17:14:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-02-06 17:15:44,954 - INFO: 127.0.0.1 - - [06/Feb/2025 17:15:44] "POST /api/files HTTP/1.1" 200 -
+2025-02-06 17:15:45,180 - INFO: 127.0.0.1 - - [06/Feb/2025 17:15:45] "GET /api/files HTTP/1.1" 200 -
+2025-02-06 17:15:45,340 - INFO: 127.0.0.1 - - [06/Feb/2025 17:15:45] "[35m[1mGET /api/stats?month=1&year=2020 HTTP/1.1[0m" 500 -
+2025-02-06 17:16:02,542 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:02] "[35m[1mGET /api/summary/monthly?month=1&year=2025 HTTP/1.1[0m" 500 -
+2025-02-06 17:16:02,684 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:02] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-02-06 17:16:02,836 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:02] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-02-06 17:16:03,223 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:03] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-02-06 17:16:03,224 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:03] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png&s=SWMf3khLR9YydmswercX HTTP/1.1" 200 -
+2025-02-06 17:16:03,462 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:03] "[36mGET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-06 17:16:14,988 - INFO: 127.0.0.1 - - [06/Feb/2025 17:16:14] "GET /api/filter?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-06 17:20:23,514 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-06 17:20:23,515 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-06 17:20:23,517 - INFO:  * Restarting with stat
+2025-02-06 17:20:24,259 - WARNING:  * Debugger is active!
+2025-02-06 17:20:24,261 - INFO:  * Debugger PIN: 290-214-146
+2025-02-06 17:20:42,792 - INFO: 127.0.0.1 - - [06/Feb/2025 17:20:42] "GET / HTTP/1.1" 200 -
+2025-02-06 17:20:43,489 - INFO: 127.0.0.1 - - [06/Feb/2025 17:20:43] "GET /api/files HTTP/1.1" 200 -
+2025-02-06 17:20:43,617 - INFO: 127.0.0.1 - - [06/Feb/2025 17:20:43] "[35m[1mGET /api/stats?month=1&year=2020 HTTP/1.1[0m" 500 -
+2025-02-06 17:20:47,606 - INFO: 127.0.0.1 - - [06/Feb/2025 17:20:47] "DELETE /api/files/98 HTTP/1.1" 200 -
+2025-02-06 17:20:47,828 - INFO: 127.0.0.1 - - [06/Feb/2025 17:20:47] "GET /api/files HTTP/1.1" 200 -
+2025-02-06 17:20:47,991 - INFO: 127.0.0.1 - - [06/Feb/2025 17:20:47] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 13:13:26,639 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-07 13:13:26,639 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-07 13:13:26,641 - INFO:  * Restarting with stat
+2025-02-07 13:13:27,356 - WARNING:  * Debugger is active!
+2025-02-07 13:13:27,357 - INFO:  * Debugger PIN: 290-214-146
+2025-02-07 13:13:30,956 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:30] "GET / HTTP/1.1" 200 -
+2025-02-07 13:13:31,767 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:31] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:13:31,839 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:31] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 13:13:31,893 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-02-07 13:13:52,749 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:52] "POST /api/files HTTP/1.1" 200 -
+2025-02-07 13:13:52,767 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:52] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:13:52,874 - INFO: 127.0.0.1 - - [07/Feb/2025 13:13:52] "[35m[1mGET /api/stats?month=1&year=2020 HTTP/1.1[0m" 500 -
+2025-02-07 13:14:08,360 - INFO: 127.0.0.1 - - [07/Feb/2025 13:14:08] "[35m[1mGET /api/summary/monthly?month=1&year=2020 HTTP/1.1[0m" 500 -
+2025-02-07 13:14:08,524 - INFO: 127.0.0.1 - - [07/Feb/2025 13:14:08] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-02-07 13:14:08,541 - INFO: 127.0.0.1 - - [07/Feb/2025 13:14:08] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-02-07 13:14:08,815 - INFO: 127.0.0.1 - - [07/Feb/2025 13:14:08] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-02-07 13:14:08,816 - INFO: 127.0.0.1 - - [07/Feb/2025 13:14:08] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png&s=S601eTU1Zrh0ybjKibZ7 HTTP/1.1" 200 -
+2025-02-07 13:14:08,882 - INFO: 127.0.0.1 - - [07/Feb/2025 13:14:08] "[36mGET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-07 13:22:24,365 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-07 13:22:24,366 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-07 13:22:24,367 - INFO:  * Restarting with stat
+2025-02-07 13:22:25,072 - WARNING:  * Debugger is active!
+2025-02-07 13:22:25,073 - INFO:  * Debugger PIN: 290-214-146
+2025-02-07 13:22:27,919 - INFO: 127.0.0.1 - - [07/Feb/2025 13:22:27] "GET / HTTP/1.1" 200 -
+2025-02-07 13:25:17,291 - INFO: 127.0.0.1 - - [07/Feb/2025 13:25:17] "GET / HTTP/1.1" 200 -
+2025-02-07 13:25:18,085 - INFO: 127.0.0.1 - - [07/Feb/2025 13:25:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-02-07 13:26:38,553 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-07 13:26:38,553 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-07 13:26:38,554 - INFO:  * Restarting with stat
+2025-02-07 13:26:39,238 - WARNING:  * Debugger is active!
+2025-02-07 13:26:39,239 - INFO:  * Debugger PIN: 290-214-146
+2025-02-07 13:26:42,910 - INFO: 127.0.0.1 - - [07/Feb/2025 13:26:42] "GET / HTTP/1.1" 200 -
+2025-02-07 13:26:43,572 - INFO: 127.0.0.1 - - [07/Feb/2025 13:26:43] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:26:43,629 - INFO: 127.0.0.1 - - [07/Feb/2025 13:26:43] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 13:26:55,683 - INFO: Monthly summary generated for 1/2025
+2025-02-07 13:26:55,684 - INFO: 127.0.0.1 - - [07/Feb/2025 13:26:55] "GET /api/summary/monthly?month=1&year=2025 HTTP/1.1" 200 -
+2025-02-07 13:27:26,944 - INFO: Monthly summary generated for 1/2025
+2025-02-07 13:27:26,945 - INFO: 127.0.0.1 - - [07/Feb/2025 13:27:26] "GET /api/summary/monthly?month=1&year=2025 HTTP/1.1" 200 -
+2025-02-07 13:27:29,049 - INFO: Detailed summary generated for 1/2025
+2025-02-07 13:27:29,050 - INFO: 127.0.0.1 - - [07/Feb/2025 13:27:29] "GET /api/summary/detailed?month=1&year=2025 HTTP/1.1" 200 -
+2025-02-07 13:29:09,726 - INFO: 127.0.0.1 - - [07/Feb/2025 13:29:09] "GET / HTTP/1.1" 200 -
+2025-02-07 13:29:09,986 - INFO: 127.0.0.1 - - [07/Feb/2025 13:29:09] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:29:10,016 - INFO: 127.0.0.1 - - [07/Feb/2025 13:29:10] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 13:29:21,027 - INFO: 127.0.0.1 - - [07/Feb/2025 13:29:21] "GET /api/filter?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 13:29:30,041 - INFO: 127.0.0.1 - - [07/Feb/2025 13:29:30] "GET /api/filter?month=12&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:29:49,081 - INFO: Monthly summary generated for 11/2024
+2025-02-07 13:29:49,081 - INFO: 127.0.0.1 - - [07/Feb/2025 13:29:49] "GET /api/summary/monthly?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:50:20,601 - INFO: 127.0.0.1 - - [07/Feb/2025 13:50:20] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:50:37,446 - INFO: 127.0.0.1 - - [07/Feb/2025 13:50:37] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:51:13,334 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:13] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:51:25,739 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:25] "PUT /api/files/98 HTTP/1.1" 200 -
+2025-02-07 13:51:26,058 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:26] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:51:26,087 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:26] "GET /api/stats?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:51:29,835 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:29] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:51:32,786 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:32] "PUT /api/files/98 HTTP/1.1" 200 -
+2025-02-07 13:51:33,027 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:33] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:51:33,129 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:33] "GET /api/stats?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:51:58,400 - INFO: Monthly summary generated for 11/2024
+2025-02-07 13:51:58,400 - INFO: 127.0.0.1 - - [07/Feb/2025 13:51:58] "GET /api/summary/monthly?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:52:01,929 - INFO: Monthly summary generated for 10/2024
+2025-02-07 13:52:01,929 - INFO: 127.0.0.1 - - [07/Feb/2025 13:52:01] "GET /api/summary/monthly?month=10&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:52:09,060 - INFO: 127.0.0.1 - - [07/Feb/2025 13:52:09] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:52:11,121 - INFO: 127.0.0.1 - - [07/Feb/2025 13:52:11] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 13:52:12,788 - INFO: 127.0.0.1 - - [07/Feb/2025 13:52:12] "PUT /api/files/98 HTTP/1.1" 200 -
+2025-02-07 13:52:13,131 - INFO: 127.0.0.1 - - [07/Feb/2025 13:52:13] "GET /api/stats?month=10&year=2024 HTTP/1.1" 200 -
+2025-02-07 13:52:13,132 - INFO: 127.0.0.1 - - [07/Feb/2025 13:52:13] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 14:07:22,676 - INFO: 127.0.0.1 - - [07/Feb/2025 14:07:22] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 14:07:39,166 - INFO: 127.0.0.1 - - [07/Feb/2025 14:07:39] "GET /api/pending HTTP/1.1" 200 -
+2025-02-07 16:16:09,217 - INFO: 127.0.0.1 - - [07/Feb/2025 16:16:09] "GET /api/pending HTTP/1.1" 200 -
+2025-02-07 16:16:46,733 - INFO: Full file export generated
+2025-02-07 16:16:46,742 - INFO: 127.0.0.1 - - [07/Feb/2025 16:16:46] "GET /api/export HTTP/1.1" 200 -
+2025-02-07 16:18:53,027 - INFO: 127.0.0.1 - - [07/Feb/2025 16:18:53] "GET / HTTP/1.1" 200 -
+2025-02-07 16:18:53,734 - INFO: 127.0.0.1 - - [07/Feb/2025 16:18:53] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 16:18:53,815 - INFO: 127.0.0.1 - - [07/Feb/2025 16:18:53] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 16:19:04,035 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:04] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 16:19:04,066 - INFO: Monthly summary generated for 1/2020
+2025-02-07 16:19:04,066 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:04] "GET /api/summary/monthly?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 16:19:37,412 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-07 16:19:37,412 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-07 16:19:37,413 - INFO:  * Restarting with stat
+2025-02-07 16:19:38,123 - WARNING:  * Debugger is active!
+2025-02-07 16:19:38,128 - INFO:  * Debugger PIN: 290-214-146
+2025-02-07 16:19:43,574 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:43] "GET / HTTP/1.1" 200 -
+2025-02-07 16:19:44,741 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:44] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 16:19:45,032 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:45] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 16:19:55,384 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:55] "GET /api/stats?month=1&year=2025 HTTP/1.1" 200 -
+2025-02-07 16:19:55,526 - INFO: Monthly summary generated for 1/2025
+2025-02-07 16:19:55,527 - INFO: 127.0.0.1 - - [07/Feb/2025 16:19:55] "GET /api/summary/monthly?month=1&year=2025 HTTP/1.1" 200 -
+2025-02-07 16:20:09,028 - INFO: 127.0.0.1 - - [07/Feb/2025 16:20:09] "GET /api/stats?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 16:20:09,067 - INFO: Monthly summary generated for 11/2024
+2025-02-07 16:20:09,068 - INFO: 127.0.0.1 - - [07/Feb/2025 16:20:09] "GET /api/summary/monthly?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 16:54:47,059 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-07 16:54:47,059 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-07 16:54:47,060 - INFO:  * Restarting with stat
+2025-02-07 16:54:47,752 - WARNING:  * Debugger is active!
+2025-02-07 16:54:47,753 - INFO:  * Debugger PIN: 290-214-146
+2025-02-07 16:54:52,918 - INFO: 127.0.0.1 - - [07/Feb/2025 16:54:52] "GET / HTTP/1.1" 200 -
+2025-02-07 16:54:53,537 - INFO: 127.0.0.1 - - [07/Feb/2025 16:54:53] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 16:54:53,842 - INFO: 127.0.0.1 - - [07/Feb/2025 16:54:53] "[35m[1mGET /api/stats?month=1&year=2020 HTTP/1.1[0m" 500 -
+2025-02-07 16:55:21,779 - INFO: 127.0.0.1 - - [07/Feb/2025 16:55:21] "[35m[1mGET /api/summary/monthly?month=11&year=2024 HTTP/1.1[0m" 500 -
+2025-02-07 16:55:21,782 - INFO: 127.0.0.1 - - [07/Feb/2025 16:55:21] "[35m[1mGET /api/stats?month=11&year=2024 HTTP/1.1[0m" 500 -
+2025-02-07 16:55:22,045 - INFO: 127.0.0.1 - - [07/Feb/2025 16:55:22] "[36mGET /api/summary/monthly?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-07 16:55:22,289 - INFO: 127.0.0.1 - - [07/Feb/2025 16:55:22] "[36mGET /api/summary/monthly?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-07 16:55:22,355 - INFO: 127.0.0.1 - - [07/Feb/2025 16:55:22] "GET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png&s=B3cuPFy8HWbZvyrAfI1g HTTP/1.1" 200 -
+2025-02-07 16:55:22,671 - INFO: 127.0.0.1 - - [07/Feb/2025 16:55:22] "[36mGET /api/summary/monthly?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-07 17:09:05,872 - INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-07 17:09:05,872 - INFO: [33mPress CTRL+C to quit[0m
+2025-02-07 17:09:05,873 - INFO:  * Restarting with stat
+2025-02-07 17:09:06,601 - WARNING:  * Debugger is active!
+2025-02-07 17:09:06,603 - INFO:  * Debugger PIN: 290-214-146
+2025-02-07 17:09:10,002 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:10] "GET / HTTP/1.1" 200 -
+2025-02-07 17:09:10,309 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:10] "GET /api/files HTTP/1.1" 200 -
+2025-02-07 17:09:10,380 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:10] "GET /api/stats?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 17:09:23,843 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:23] "GET /api/stats?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 17:09:23,977 - INFO: Monthly summary generated for 11/2024
+2025-02-07 17:09:23,978 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:23] "GET /api/summary/monthly?month=11&year=2024 HTTP/1.1" 200 -
+2025-02-07 17:09:39,131 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:39] "GET /api/stats?month=12&year=2024 HTTP/1.1" 200 -
+2025-02-07 17:09:39,159 - INFO: Monthly summary generated for 12/2024
+2025-02-07 17:09:39,159 - INFO: 127.0.0.1 - - [07/Feb/2025 17:09:39] "GET /api/summary/monthly?month=12&year=2024 HTTP/1.1" 200 -
+2025-02-07 17:10:44,706 - INFO: 127.0.0.1 - - [07/Feb/2025 17:10:44] "GET /api/filter?month=1&year=2020 HTTP/1.1" 200 -
+2025-02-07 17:10:44,986 - INFO: 127.0.0.1 - - [07/Feb/2025 17:10:44] "GET /api/stats?month=12&year=2024 HTTP/1.1" 200 -
+2025-02-07 17:10:46,230 - INFO: Full file export generated
+2025-02-07 17:10:46,230 - INFO: 127.0.0.1 - - [07/Feb/2025 17:10:46] "GET /api/export HTTP/1.1" 200 -
