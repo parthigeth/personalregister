@@ -1,0 +1,5 @@
+Flask
+pandas
+python-dateutil
+xlsxwriter
+gunicorn
